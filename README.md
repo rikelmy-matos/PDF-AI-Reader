@@ -1,76 +1,57 @@
-# TrustBPO - Extrator de Notas Fiscais
+# Extrator de Notas Fiscais
 
-Sistema para extração automatizada de informações de notas fiscais em PDF.
+Sistema para extração automatizada de informações de notas fiscais em arquivos PDF.
 
-## Pré-requisitos
+## Pré‑requisitos
 
-1. Python 3.8+
-2. Tesseract OCR instalado no sistema
-3. Poppler instalado (necessário para pdf2image)
+- Python 3.8 ou superior  
+- Tesseract OCR instalado no sistema  
+- Poppler instalado (necessário para o uso do `pdf2image`)
 
 ## Instalação
 
 ### Instalar Tesseract OCR
 
 #### Windows
-1. Baixe o instalador do [Tesseract OCR para Windows](https://github.com/UB-Mannheim/tesseract/wiki)
-2. Instale no caminho padrão `C:\Program Files\Tesseract-OCR\`
-3. Certifique-se de instalar o pacote de idioma português
+1. Baixe o instalador do [Tesseract OCR para Windows](https://github.com/UB-Mannheim/tesseract/wiki)  
+2. Instale no caminho padrão, por exemplo:  
+   `C:\Program Files\Tesseract-OCR\`  
+3. Certifique-se de instalar também o pacote de idioma português.
 
 #### Linux
-```bash
 sudo apt-get update
 sudo apt-get install tesseract-ocr
-sudo apt-get install tesseract-ocr-por  # Português
-```
+sudo apt-get install tesseract-ocr-por  # Suporte ao idioma português
 
-### Instalar Poppler
 
-#### Windows
-1. Baixe o Poppler para Windows do [poppler-windows](https://github.com/oschwartz10612/poppler-windows/releases/)
-2. Adicione o diretório `bin` ao PATH
+#### Instalar Poppler
+Baixe o Poppler para Windows em poppler-windows
+
+Adicione o diretório bin do Poppler à variável de ambiente PATH
 
 #### Linux
-```bash
 sudo apt-get install poppler-utils
-```
-
-### Instalar Dependências Python
-
-```bash
+Instalar Dependências Python
+bash
+Copiar
+Editar
 pip install -r requirements.txt
-```
+Configuração
+Antes de executar o sistema, abra o arquivo app.py e ajuste os caminhos conforme a sua máquina:
 
-## Configuração
+#### Caminho do Tesseract OCR:
 
-### Configurar Caminhos
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+Pasta onde estão os PDFs a serem processados:
 
-Antes de executar o sistema, é necessário configurar os caminhos corretos no arquivo `app.py`:
+pasta_pdf = r"C:\Caminho\Para\Seus\PDFs"
+Pasta raiz do projeto:
 
-1. **Caminho do Tesseract OCR**: Linha 386
-   ```python
-   pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-   ```
+pasta_raiz = r"C:\Caminho\Para\O\Projeto"
+Importante: Ajuste esses caminhos de acordo com a estrutura do seu ambiente.
 
-2. **Pasta dos PDFs**: Linha 388
-   ```python
-   pasta_pdf = r"C:\Repos\Poc\TrustBPO\Faturas"
-   ```
+#### Uso
+Coloque os arquivos PDF na pasta configurada em pasta_pdf.
 
-3. **Pasta Raiz do Projeto**: Linha 389
-   ```python
-   pasta_raiz = r"C:\Repos\Poc\TrustBPO"
-   ```
-
-**Importante**: Ajuste estes caminhos de acordo com a sua instalação e estrutura de pastas.
-
-## Uso
-
-1. Coloque os arquivos PDF na pasta configurada em `pasta_pdf`
-2. Execute o script:
-
-```bash
+#### Execute o script:
 python app.py
-```
-
-O script processará todos os PDFs na pasta e gerará um arquivo CSV com as informações extraídas na pasta raiz do projeto.
