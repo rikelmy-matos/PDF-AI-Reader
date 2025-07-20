@@ -1,0 +1,13 @@
+[project]
+name = "trustbpo-extrator-pdf"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pdf2image==1.16.3",
+    "pdfplumber==0.10.3",
+    "pillow==10.2.0",
+    "pytesseract==0.3.10",
+    "requests==2.31.0",
+]
