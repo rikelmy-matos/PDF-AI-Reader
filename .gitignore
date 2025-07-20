@@ -161,3 +161,4 @@ Faturas/*
 !Faturas/.gitkeep
 
 ini.env
+logs/*
